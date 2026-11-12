@@ -1,0 +1,16 @@
+def binning(values: list, num_bins: int) -> list:
+    """
+    Returns the equal-width bin index of every value.
+    """
+    min_val = min(values)
+    max_val = max(values)
+    if min_val == max_val:
+        return [0] * len(values)
+
+    width = (max_val - min_val) / num_bins
+    bins = []
+    for i in values:
+        bi = min(int((i - min_val) / width), num_bins - 1)
+        bins.append(bi)
+    
+    return bins
